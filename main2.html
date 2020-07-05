@@ -41,6 +41,7 @@ window.addEventListener('load', function () {
   canvas.addEventListener('mousedown', drawstart, false);
   canvas.addEventListener('mousemove', drawmove, false);
   canvas.addEventListener('mouseup', drawend, false);
+  canvas.addEventListener('mouseout', drawend, false);
 }, false); // end window.onLoad
 
 function doPost(url, data) {
