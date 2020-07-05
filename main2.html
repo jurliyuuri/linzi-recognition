@@ -82,6 +82,8 @@ function drawNewChar() {
     var content = getImage_(l, ["SY", "jv", "SY pua2 man1", "noborder", "border"], 60, false, "http://jurliyuuri.com/lin-marn")           ;
     if (typeof content === "string") {
         document.getElementById("char").innerHTML = content;
+        document.getElementById("hanzi1").innerHTML = l;
+        document.getElementById("hanzi2").innerHTML = l;
         currentLinzi = l;
     } else {
         drawNewChar();
@@ -105,7 +107,7 @@ function enter() {
     document.getElementById("download").innerHTML = "<a href='" + url + `' download><img class="btn" src="download.png" width="80"></a>`;
 }
 </script></head><body encoding="utf8" style="text-align: center;">
-    <span id="char" style="width: 60px; height: 60px;"></span>
+    <span id="hanzi1"></span><span id="char" style="width: 60px; height: 60px;"></span><span id="hanzi2"></span>
     <script>
         drawNewChar()
     </script><br>
