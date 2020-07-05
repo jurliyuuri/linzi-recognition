@@ -6,6 +6,10 @@
         <script src="http://jurliyuuri.com/lin-marn/image_table/char_and_folder_info.js"></script>
         <script src="http://jurliyuuri.com/lin-marn/image_table/image_existence_table.js"></script>
         <script src="http://jurliyuuri.com/lin-marn/image_table/get_image.js"></script>
+        <style>
+            .btn {border: 2px solid white; }
+            .btn:hover {border: 2px solid green; }
+        </style>
         <script type="text/javascript">
         /* Copied & pasted & modified from https://stackoverflow.com/questions/16057256/draw-on-a-canvas-via-mouse-and-touch */
 window.addEventListener('load', function () {
@@ -59,12 +63,28 @@ function doPost(url, data) {
     };
     xhr.send(data);
 }
+
+function erase() {
+    const canvas = document.getElementById('sketchpad');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function drawChar() {
+    var content = getImage_(linzi_list[linzi_list.length * Math.random() | 0], ["SY", "jv", "SY pua2 man1", "noborder", "border"], 60, false, "http://jurliyuuri.com/lin-marn")           ;
+    if (typeof content === "string") {
+        document.getElementById("char").innerHTML = content;
+    } else {
+        drawChar();
+    }
+}
 </script></head><body encoding="utf8" style="text-align: center;">
+    <span id="char" style="width: 60px; height: 60px;"></span>
     <script>
-        document.write(
-            getImage_("冠", ["SY", "jv", "SY pua2 man1", "noborder", "border"], 60, false, "http://jurliyuuri.com/lin-marn/"),
-            
-        );
+        drawChar()
     </script><br>
-  <canvas id="sketchpad" width="256" height="256" style="border:1px solid #777"/>
+  <canvas id="sketchpad" width="256" height="256" style="border:1px solid #777"></canvas><br>
+  <img class="btn" src="eraser.png" width="80" onclick="erase()">
+  <img src="empty.png" width="80">
+  <img class="btn" src="send.png" width="80">
 </body></html>
