@@ -11,12 +11,14 @@
             .btn:hover {border: 2px solid green; }
         </style>
         <script type="text/javascript">
+var bufferbuffer = [];
         /* Copied & pasted & modified from https://stackoverflow.com/questions/16057256/draw-on-a-canvas-via-mouse-and-touch */
 window.addEventListener('load', function () {
   // get the canvas element and its context
   var canvas = document.getElementById('sketchpad');
   var context = canvas.getContext('2d');
   var buffer = null;
+  
   function drawstart(event) {
     context.beginPath();
     context.moveTo(event.pageX - canvas.offsetLeft, event.pageY - canvas.offsetTop);
@@ -32,6 +34,7 @@ window.addEventListener('load', function () {
     if (!buffer) return;
     drawmove(event);
     console.log(buffer);
+    bufferbuffer.push(buffer);
     buffer = null;
   }
   function touchstart(event) { drawstart(event.touches[0]) }
@@ -70,21 +73,44 @@ function erase() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function drawChar() {
-    var content = getImage_(linzi_list[linzi_list.length * Math.random() | 0], ["SY", "jv", "SY pua2 man1", "noborder", "border"], 60, false, "http://jurliyuuri.com/lin-marn")           ;
+var currentLinzi = null;
+
+function drawNewChar() {
+    const l = linzi_list[linzi_list.length * Math.random() | 0];
+    var content = getImage_(l, ["SY", "jv", "SY pua2 man1", "noborder", "border"], 60, false, "http://jurliyuuri.com/lin-marn")           ;
     if (typeof content === "string") {
         document.getElementById("char").innerHTML = content;
+        currentLinzi = l;
     } else {
-        drawChar();
+        drawNewChar();
     }
+}
+
+var characters = [];
+
+function enter() { 
+    const character = {character: currentLinzi, data: bufferbuffer};
+    console.log("got data: ", JSON.stringify(character));
+    characters.push(character);
+    document.getElementById("count").innerHTML = characters.length;
+    bufferbuffer = [];
+    erase();
+    drawNewChar();
+
+    const blob = new Blob([JSON.stringify(characters, null, '  ')], {type: 'application/json'});
+
+    const url = URL.createObjectURL(blob);
+    document.getElementById("download").innerHTML = "<a href='" + url + `' download><img class="btn" src="download.png" width="80"></a>`;
 }
 </script></head><body encoding="utf8" style="text-align: center;">
     <span id="char" style="width: 60px; height: 60px;"></span>
     <script>
-        drawChar()
+        drawNewChar()
     </script><br>
   <canvas id="sketchpad" width="256" height="256" style="border:1px solid #777"></canvas><br>
   <img class="btn" src="eraser.png" width="80" onclick="erase()">
   <img src="empty.png" width="80">
-  <img class="btn" src="send.png" width="80">
+  <img class="btn" src="enter.png" width="80" onclick="enter()"><br>
+  <br>入力済みデータ数: <span id="count">0</span><br>
+  <span id="download"></span>
 </body></html>
