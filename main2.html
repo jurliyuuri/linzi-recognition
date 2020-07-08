@@ -6,6 +6,7 @@
         <script src="http://jurliyuuri.com/lin-marn/image_table/char_and_folder_info.js"></script>
         <script src="http://jurliyuuri.com/lin-marn/image_table/image_existence_table.js"></script>
         <script src="http://jurliyuuri.com/lin-marn/image_table/get_image.js"></script>
+        <script src="praige_dat.js"></script>
         <style>
             .btn {border: 2px solid white; }
             .btn:hover {border: 2px solid green; }
@@ -84,6 +85,8 @@ function drawNewChar() {
         document.getElementById("char").innerHTML = content;
         document.getElementById("hanzi1").innerHTML = l;
         document.getElementById("hanzi2").innerHTML = l;
+        document.getElementById("praige1").innerHTML = praige_dat[l];
+        document.getElementById("praige2").innerHTML = praige_dat[l];
         currentLinzi = l;
     } else {
         drawNewChar();
@@ -107,7 +110,7 @@ function enter() {
     document.getElementById("download").innerHTML = "<a href='" + url + `' download><img class="btn" src="download.png" width="80"></a>`;
 }
 </script></head><body encoding="utf8" style="text-align: center;">
-    <span id="hanzi1"></span><span id="char" style="width: 60px; height: 60px;"></span><span id="hanzi2"></span>
+    <span id="praige1" style="color:white"></span><span id="hanzi1"></span><span id="char" style="width: 60px; height: 60px;"></span><span id="praige2"></span><span id="hanzi2" style="color: white"></span>
     <script>
         drawNewChar()
     </script><br>
