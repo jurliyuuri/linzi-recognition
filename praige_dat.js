@@ -300,7 +300,7 @@ const praige_dat = {
 "吏":"",
 "麗":"hem1",
 "等":"ge",
-"船":"muak1",
+"船":"muak1, nuak1",
 "魚":"mui1",
 "笙":"lok1",
 "疲":"",
