@@ -24,6 +24,7 @@ window.addEventListener('load', function () {
     context.beginPath();
     context.moveTo(event.pageX - canvas.offsetLeft, event.pageY - canvas.offsetTop);
     buffer = [];
+    buffer.push({x: event.pageX - canvas.offsetLeft, y: event.pageY - canvas.offsetTop});
   }
   function drawmove(event) {
     if (!buffer) return;
@@ -96,7 +97,7 @@ function drawNewChar() {
 var characters = [];
 
 function enter() { 
-    const character = {character: currentLinzi, data: bufferbuffer};
+    const character = {character: currentLinzi, data: bufferbuffer, initialDotCaptured: true};
     console.log("got data: ", JSON.stringify(character));
     characters.push(character);
     document.getElementById("count").innerHTML = characters.length;
