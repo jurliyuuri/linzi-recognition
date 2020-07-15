@@ -80,8 +80,8 @@ function erase() {
 var currentLinzi = null;
 
 function drawNewChar() {
-    const l = linzi_list[linzi_list.length * Math.random() | 0];
-    var content = getImage_(l, ["SY", "jv", "SY pua2 man1", "noborder", "border"], 60, false, "http://jurliyuuri.com/lin-marn")           ;
+    const l = Math.random() < 0.115 - 4 / 343 ? ["刺", "民", "育", "呻"][4 * Math.random() | 0] : linzi_list[linzi_list.length * Math.random() | 0];
+    var content = getImage_(l, ["SY", "jv", "jv touch panel", "SY pua2 man1", "noborder", "border"], 60, false, "http://jurliyuuri.com/lin-marn")           ;
     if (typeof content === "string") {
         document.getElementById("char").innerHTML = content;
         document.getElementById("hanzi1").innerHTML = l;
