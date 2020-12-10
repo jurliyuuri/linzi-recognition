@@ -86,8 +86,8 @@ function drawNewChar() {
         document.getElementById("char").innerHTML = content;
         document.getElementById("hanzi1").innerHTML = l;
         document.getElementById("hanzi2").innerHTML = l;
-        document.getElementById("praige1").innerHTML = praige_dat[l];
-        document.getElementById("praige2").innerHTML = praige_dat[l];
+        document.getElementById("praige1").innerHTML = praige_dat[l] || "";
+        document.getElementById("praige2").innerHTML = praige_dat[l] || "";
         currentLinzi = l;
     } else {
         drawNewChar();
