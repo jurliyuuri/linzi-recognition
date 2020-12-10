@@ -80,7 +80,13 @@ function erase() {
 var currentLinzi = null;
 
 function drawNewChar() {
-    const l = linzi_list[linzi_list.length * Math.random() | 0];
+    const l = 
+        Math.random() < 5/7 - 44 / 387 ? 
+        ["遠", "激", "付", "子", "迷", "常", "形", "毎", "普", "白", "寒", 
+         "軽", "急", "型", "質", "咍", "犬", "穏", "毛", "巻", "躍", "壁", 
+         "牛", "卵", "球", "羊", "穴", "凹", "淮", "思", "帝", "杯", "可", 
+         "蛋", "顔", "醇", "羚", "牡", "槍", "鑓", "斧", "必", "囁", "叫"][44 * Math.random() | 0] : 
+        linzi_list[linzi_list.length * Math.random() | 0];
     var content = getImage_(l, ["SY", "jv", "jv touch panel", "SY pua2 man1", "noborder", "border"], 60, false, "http://jurliyuuri.com/lin-marn")           ;
     if (typeof content === "string") {
         document.getElementById("char").innerHTML = content;
