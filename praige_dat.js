@@ -354,4 +354,5 @@ const praige_dat = {
 "蛋":"uet",
 "醇":"no1",
 "必":"ly",
+"壁":"co1",
 }
