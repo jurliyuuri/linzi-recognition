@@ -356,4 +356,5 @@ const praige_dat = {
 "必":"ly",
 "壁":"co1",
 "犬":"pa2",
+"叫":"puak1",
 }
