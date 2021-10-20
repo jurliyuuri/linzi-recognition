@@ -79,12 +79,23 @@ function erase() {
 
 var currentLinzi = null;
 
-function drawNewChar() {
-    const l = 
-       /* Math.random() < 0.1 ? 
-        ["遊","怖","胸","鶏"][4 * Math.random() | 0] : */
+function draw() {
+    return Math.random() < 0.55 ? 
+        ["体", "頬", "硫", "俐", "決", "引", "汪", "榎", "株", "織", 
+         "村", "犛", "牲", "溜", "泉", "玉", "叉", "飛", "鍋", "蟲", 
+         "矢", "玄"][22 * Math.random() | 0] : 
         linzi_list[linzi_list.length * Math.random() | 0];
-    var content = getImage_(l, ["SY", "jv", "jv touch panel", "SY pua2 man1", "noborder", "border"], 60, false, "http://jurliyuuri.com/lin-marn")           ;
+}
+
+function drawNewChar() {
+    let l = draw();
+    l = (l === "石") ? draw() : l; // suppress 石
+
+    // avoid choosing the same linzi
+    while (l === currentLinzi) {
+        l = draw();
+    }
+    const content = getImage_(l, ["SY", "jv", "jv touch panel", "SY pua2 man1", "noborder", "border", "geometric"], 60, false, "http://jurliyuuri.com/lin-marn")           ;
     if (typeof content === "string") {
         document.getElementById("char").innerHTML = content;
         document.getElementById("hanzi1").innerHTML = l;
