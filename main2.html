@@ -90,6 +90,7 @@ function draw() {
 function drawNewChar() {
     let l = draw();
     l = (l === "石") ? draw() : l; // suppress 石
+    l = (l === "慥") ? draw() : l; // suppress 慥
 
     // avoid choosing the same linzi
     while (l === currentLinzi) {
