@@ -352,6 +352,7 @@ const praige_dat = {
 "叮":"tei1",
 "檸":"siet1",
 "蛋":"uet",
+"顔":"san1",
 "醇":"no1",
 "必":"ly",
 "壁":"co1",
