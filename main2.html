@@ -98,7 +98,6 @@ const current_list = ["石", "兄", "肉", "前", "綿", "从", "背", "北", "�
 function drawNewChar() {
     let l = draw();
     l = (l === "石") ? draw() : l; // suppress 石
-    l = (!current_list.includes(l)) ? draw() : l; // suppress chacacters such as 慥
 
     // avoid choosing the same linzi
     while (l === currentLinzi) {
